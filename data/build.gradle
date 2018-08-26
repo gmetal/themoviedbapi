@@ -26,15 +26,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':data')
+    implementation project(':domain')
 
     implementation "com.android.support:support-annotations:$rootProject.ext.appCompatVersion"
-
-    implementation "org.parceler:parceler-api:$rootProject.ext.parcelerVersion"
-    annotationProcessor "org.parceler:parceler:$rootProject.ext.parcelerVersion"
 
     annotationProcessor "com.bluelinelabs:logansquare-compiler:$rootProject.ext.logansquareVersion"
     implementation "com.bluelinelabs:logansquare:$rootProject.ext.logansquareVersion"
 
-    testImplementation 'junit:junit:4.12'
+    api "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    implementation("com.squareup.retrofit2:converter-simplexml:$rootProject.ext.retrofitVersion") {
+        exclude module: 'stax-api'
+        exclude module: 'stax'
+        exclude module: 'pp3'
+    }
+    api "com.github.aurae.retrofit2:converter-logansquare:1.4.1"
 }
+
