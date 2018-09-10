@@ -1,20 +1,13 @@
 package com.github.gmetal.data.moviedbapi.injection
 
-import android.app.Activity
-
-import com.github.gmetal.data.moviedbapi.MainActivity
-
-import dagger.Binds
+import com.github.gmetal.data.moviedbapi.mvp.MovieListPresenter
+import com.github.gmetal.data.repository.TheMovieDbRepository
 import dagger.Module
-import dagger.android.ActivityKey
-import dagger.android.AndroidInjector
-import dagger.multibindings.IntoMap
+import dagger.Provides
 
 @Module
-abstract class MainActivityModule {
+class MainActivityModule {
 
-    @Binds
-    @IntoMap
-    @ActivityKey(MainActivity::class)
-    internal abstract fun bindMainActivityInjectorFactory(builder: MainActivitySubcomponent.Builder): AndroidInjector.Factory<out Activity>
+    @Provides
+    fun providesMovieListPresenter(repository: TheMovieDbRepository) = MovieListPresenter(repository.moviesDataSource)
 }
