@@ -36,6 +36,6 @@ ext {
     okHttpVersion = "3.8.0"
     parcelerVersion = "1.1.9"
     logansquareVersion = "1.3.7"
-    daggerVersion = "2.11"
+    daggerVersion = "2.17"
     pagingVersion = "1.0.0"
 }

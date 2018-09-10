@@ -33,6 +33,11 @@ dependencies {
     annotationProcessor "com.bluelinelabs:logansquare-compiler:$rootProject.ext.logansquareVersion"
     implementation "com.bluelinelabs:logansquare:$rootProject.ext.logansquareVersion"
 
+    implementation "com.google.dagger:dagger-android:$rootProject.ext.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.ext.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.ext.daggerVersion"
+
     api "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     implementation("com.squareup.retrofit2:converter-simplexml:$rootProject.ext.retrofitVersion") {
         exclude module: 'stax-api'
