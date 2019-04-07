@@ -31,7 +31,6 @@ ext {
     targetSdkVersion = 28
     compileSdkVersion = 28
     buildToolsVersion = "28.0.2"
-    appCompatVersion = '1.0.0-beta01'
     retrofitVersion = "2.3.0"
     okHttpVersion = "3.8.0"
     parcelerVersion = "1.1.12"

@@ -27,7 +27,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "androidx.annotation:annotation:$rootProject.ext.appCompatVersion"
+    implementation "androidx.annotation:annotation:1.0.2"
 
     implementation "org.parceler:parceler-api:$rootProject.ext.parcelerVersion"
     annotationProcessor "org.parceler:parceler:$rootProject.ext.parcelerVersion"
