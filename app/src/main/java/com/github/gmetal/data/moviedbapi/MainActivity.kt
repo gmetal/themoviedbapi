@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.ProgressBar
+import android.widget.TextView
 import com.github.gmetal.data.moviedbapi.mvp.MovieListPresenter
 import com.github.gmetal.data.moviedbapi.mvp.MovieListView
 import com.github.gmetal.domain.model.MediaInfo
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity(), MovieListView {
 
     lateinit var movieList: RecyclerView
     lateinit var loadingIndicator: ProgressBar
+    lateinit var emptyView: TextView
     @Inject
     lateinit var presenter: MovieListPresenter
 
@@ -31,6 +34,7 @@ class MainActivity : AppCompatActivity(), MovieListView {
 
         movieList = findViewById(R.id.movie_list)
         loadingIndicator = findViewById(R.id.loading)
+        emptyView = findViewById(R.id.empty_view)
 
         movieList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
@@ -49,7 +53,8 @@ class MainActivity : AppCompatActivity(), MovieListView {
     }
 
     override fun showError(error: Throwable) {
-        Snackbar.make(findViewById(android.R.id.content), error.message!!, LENGTH_LONG)
+
+        Snackbar.make(findViewById(android.R.id.content), error.message!!, LENGTH_LONG).show()
     }
 
     override fun setData(data: MutableList<MediaInfo>) {
@@ -62,12 +67,20 @@ class MainActivity : AppCompatActivity(), MovieListView {
     }
 
     override fun showContent() {
-        movieList.visibility = View.VISIBLE
-        loadingIndicator.visibility = View.GONE
+        movieList.visibility = VISIBLE
+        loadingIndicator.visibility = GONE
+        emptyView.visibility = GONE
     }
 
     override fun showLoading() {
-        movieList.visibility = View.GONE
-        loadingIndicator.visibility = View.VISIBLE
+        movieList.visibility = GONE
+        loadingIndicator.visibility = VISIBLE
+        emptyView.visibility = VISIBLE
+    }
+
+    override fun showEmpty(isError: Boolean) {
+        movieList.visibility = GONE
+        loadingIndicator.visibility = GONE
+        emptyView.visibility = VISIBLE
     }
 }

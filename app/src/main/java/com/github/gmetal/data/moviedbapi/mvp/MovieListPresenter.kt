@@ -3,7 +3,7 @@ package com.github.gmetal.data.moviedbapi.mvp
 import com.github.gmetal.domain.model.MediaInfo
 import com.github.gmetal.domain.repository.MoviesDataSource
 
-class MovieListPresenter(val movieDataSource: MoviesDataSource) {
+class MovieListPresenter(private val movieDataSource: MoviesDataSource) {
 
     var view: MovieListView? = null
     var pageNumber: Int = 1
@@ -19,8 +19,6 @@ class MovieListPresenter(val movieDataSource: MoviesDataSource) {
         this.view = null
     }
 
-    fun isViewAttached() = this.view != null
-
     fun loadData() {
 
         if (isLoadingMore) {
@@ -29,8 +27,7 @@ class MovieListPresenter(val movieDataSource: MoviesDataSource) {
 
         isLoadingMore = true
 
-
-        this.view?.showLoading()
+        view?.showLoading()
 
         movieDataSource.getLatestMovies(this.pageNumber,
                 { mutableList: MutableList<MediaInfo>, i: Int, i1: Int, i2: Int?, i3: Int? ->

@@ -8,4 +8,5 @@ interface MovieListView {
     fun setData(data: MutableList<MediaInfo>)
     fun showContent()
     fun showLoading()
+    fun showEmpty(isError: Boolean)
 }
