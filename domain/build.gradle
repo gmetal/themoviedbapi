@@ -9,7 +9,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -27,7 +27,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.android.support:support-annotations:$rootProject.ext.appCompatVersion"
+    implementation "androidx.annotation:annotation:$rootProject.ext.appCompatVersion"
 
     implementation "org.parceler:parceler-api:$rootProject.ext.parcelerVersion"
     annotationProcessor "org.parceler:parceler:$rootProject.ext.parcelerVersion"

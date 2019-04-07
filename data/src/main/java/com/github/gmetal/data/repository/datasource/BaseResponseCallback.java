@@ -1,6 +1,6 @@
 package com.github.gmetal.data.repository.datasource;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.github.gmetal.domain.repository.callback.FailureCallback;
 import com.github.gmetal.domain.repository.callback.SuccessCallback;

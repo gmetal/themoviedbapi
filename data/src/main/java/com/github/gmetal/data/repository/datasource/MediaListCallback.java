@@ -1,6 +1,6 @@
 package com.github.gmetal.data.repository.datasource;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.github.gmetal.data.net.response.BasePagedResponseEntity;
 import com.github.gmetal.domain.model.MediaInfo;
