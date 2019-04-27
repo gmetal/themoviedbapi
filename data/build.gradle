@@ -1,4 +1,4 @@
-apply plugin: 'com.android.library'
+apply plugin: "com.android.library"
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -19,15 +19,14 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':domain')
-
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(":domain")
     implementation "androidx.annotation:annotation:1.0.2"
 
     annotationProcessor "com.bluelinelabs:logansquare-compiler:$rootProject.ext.logansquareVersion"
@@ -40,9 +39,9 @@ dependencies {
 
     api "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     implementation("com.squareup.retrofit2:converter-simplexml:$rootProject.ext.retrofitVersion") {
-        exclude module: 'stax-api'
-        exclude module: 'stax'
-        exclude module: 'pp3'
+        exclude module: "stax-api"
+        exclude module: "stax"
+        exclude module: "pp3"
     }
     api "com.github.aurae.retrofit2:converter-logansquare:1.4.1"
 }

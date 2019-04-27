@@ -5,8 +5,8 @@ import com.github.gmetal.data.entity.mapper.Mappers;
 import com.github.gmetal.data.net.TheMovieDBService;
 import com.github.gmetal.data.net.response.MoviesNowPlayingResponseEntity;
 import com.github.gmetal.domain.model.MediaInfo;
-import com.github.gmetal.domain.repository.callback.FailureCallback;
-import com.github.gmetal.domain.repository.callback.PagedListSuccessCallback;
+import com.github.gmetal.data.repository.callback.FailureCallback;
+import com.github.gmetal.data.repository.callback.PagedListSuccessCallback;
 
 
 public class MovieMediaLoader extends BaseMediaLoader<MoviesNowPlayingResponseEntity, MovieEntity, MediaInfo> {

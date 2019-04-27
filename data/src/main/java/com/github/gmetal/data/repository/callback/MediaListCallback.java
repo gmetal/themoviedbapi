@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 
 import com.github.gmetal.data.net.response.BasePagedResponseEntity;
 import com.github.gmetal.domain.model.MediaInfo;
-import com.github.gmetal.domain.repository.callback.FailureCallback;
-import com.github.gmetal.domain.repository.callback.PagedListSuccessCallback;
+import com.github.gmetal.data.repository.callback.FailureCallback;
+import com.github.gmetal.data.repository.callback.PagedListSuccessCallback;
 
 import java.util.ArrayList;
 import java.util.List;

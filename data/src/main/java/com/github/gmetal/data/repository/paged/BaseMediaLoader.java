@@ -2,8 +2,8 @@ package com.github.gmetal.data.repository.datasource;
 
 import com.github.gmetal.data.net.TheMovieDBService;
 import com.github.gmetal.data.net.response.BasePagedResponseEntity;
-import com.github.gmetal.domain.repository.callback.FailureCallback;
-import com.github.gmetal.domain.repository.callback.PagedListSuccessCallback;
+import com.github.gmetal.data.repository.callback.FailureCallback;
+import com.github.gmetal.data.repository.callback.PagedListSuccessCallback;
 
 import retrofit2.Call;
 

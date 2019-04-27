@@ -2,8 +2,8 @@ package com.github.gmetal.data.repository.datasource;
 
 import androidx.annotation.NonNull;
 
-import com.github.gmetal.domain.repository.callback.FailureCallback;
-import com.github.gmetal.domain.repository.callback.SuccessCallback;
+import com.github.gmetal.data.repository.callback.FailureCallback;
+import com.github.gmetal.data.repository.callback.SuccessCallback;
 
 import retrofit2.Call;
 import retrofit2.Callback;
