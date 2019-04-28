@@ -1,12 +1,13 @@
-package com.github.gmetal.data.repository.datasource;
+package com.github.gmetal.data.repository.paged;
 
 import com.github.gmetal.data.entity.TvShowEntity;
 import com.github.gmetal.data.entity.mapper.Mappers;
 import com.github.gmetal.data.net.TheMovieDBService;
-import com.github.gmetal.data.net.response.TvShowsOnAirResponseEntity;
-import com.github.gmetal.domain.model.MediaInfo;
+import com.github.gmetal.data.entity.response.TvShowsOnAirResponseEntity;
 import com.github.gmetal.data.repository.callback.FailureCallback;
+import com.github.gmetal.data.repository.callback.MediaListCallback;
 import com.github.gmetal.data.repository.callback.PagedListSuccessCallback;
+import com.github.gmetal.domain.model.MediaInfo;
 
 public class TvMediaLoader extends BaseMediaLoader<TvShowsOnAirResponseEntity, TvShowEntity, MediaInfo> {
 

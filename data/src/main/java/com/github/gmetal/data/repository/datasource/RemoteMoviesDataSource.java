@@ -2,8 +2,9 @@ package com.github.gmetal.data.repository.datasource;
 
 import com.github.gmetal.data.entity.MovieEntity;
 import com.github.gmetal.data.net.TheMovieDBService;
-import com.github.gmetal.domain.repository.MoviesDataSource;
-import com.github.gmetal.domain.repository.callback.FailureCallback;
+import com.github.gmetal.data.repository.callback.BaseResponseCallback;
+import com.github.gmetal.data.repository.callback.FailureCallback;
+import com.github.gmetal.data.repository.paged.MovieMediaLoader;
 
 import retrofit2.Call;
 

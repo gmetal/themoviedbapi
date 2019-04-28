@@ -1,4 +1,4 @@
-package com.github.gmetal.data.net.response;
+package com.github.gmetal.data.entity.response;
 
 import com.bluelinelabs.logansquare.annotation.JsonField;
 import com.bluelinelabs.logansquare.annotation.JsonObject;

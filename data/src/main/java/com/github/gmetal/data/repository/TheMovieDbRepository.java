@@ -1,8 +1,8 @@
 package com.github.gmetal.data.repository;
 
-import com.github.gmetal.domain.repository.MoviesDataSource;
-import com.github.gmetal.domain.repository.TvSeriesDataSource;
-import com.github.gmetal.domain.repository.UserDataSource;
+import com.github.gmetal.data.repository.datasource.MoviesDataSource;
+import com.github.gmetal.data.repository.datasource.TvSeriesDataSource;
+import com.github.gmetal.data.repository.datasource.UserDataSource;
 
 public class TheMovieDbRepository {
 

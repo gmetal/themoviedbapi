@@ -2,11 +2,11 @@ package com.github.gmetal.data.net;
 
 import com.github.gmetal.data.entity.AccountEntity;
 import com.github.gmetal.data.entity.MovieEntity;
-import com.github.gmetal.data.net.response.MoviesNowPlayingResponseEntity;
+import com.github.gmetal.data.entity.response.MoviesNowPlayingResponseEntity;
 import com.github.gmetal.data.entity.RequestTokenEntity;
 import com.github.gmetal.data.entity.SessionEntity;
 import com.github.gmetal.data.entity.TvShowEntity;
-import com.github.gmetal.data.net.response.TvShowsOnAirResponseEntity;
+import com.github.gmetal.data.entity.response.TvShowsOnAirResponseEntity;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,9 +1,6 @@
-package com.github.gmetal.data.repository.datasource;
+package com.github.gmetal.data.repository.callback;
 
 import androidx.annotation.NonNull;
-
-import com.github.gmetal.data.repository.callback.FailureCallback;
-import com.github.gmetal.data.repository.callback.PagedListSuccessCallback;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,10 +1,10 @@
-package com.github.gmetal.domain.repository;
+package com.github.gmetal.data.repository.datasource;
 
+import com.github.gmetal.data.repository.callback.FailureCallback;
+import com.github.gmetal.data.repository.callback.SuccessCallback;
 import com.github.gmetal.domain.model.Account;
 import com.github.gmetal.domain.model.ServerSession;
 import com.github.gmetal.domain.model.Token;
-import com.github.gmetal.domain.repository.callback.FailureCallback;
-import com.github.gmetal.domain.repository.callback.SuccessCallback;
 
 public interface UserDataSource {
 

@@ -1,4 +1,4 @@
-package com.github.gmetal.domain.repository.callback;
+package com.github.gmetal.data.repository.callback;
 
 import androidx.annotation.Nullable;
 
@@ -10,4 +10,3 @@ public interface PagedListSuccessCallback<O> {
     void onSuccess(final List<O> dataList, int position, int totalCount,
                    @Nullable Integer previousPageKey, @Nullable final Integer nextPageKey);
 }
-
