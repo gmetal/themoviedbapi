@@ -2,22 +2,20 @@ package com.github.gmetal.data.repository.callback;
 
 import androidx.annotation.NonNull;
 
+import com.github.gmetal.lib.Notifiable;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BaseResponseCallback<T, R> implements Callback<R> {
 
-    private final SuccessCallback<T> mSuccessCallback;
-    private final FailureCallback mFailureCallback;
     private final ResponseConverter<T, R> mResponseConverter;
+    private Notifiable<T, Throwable> mNotifiable;
 
-    public BaseResponseCallback(final SuccessCallback<T> successCallback,
-                                final FailureCallback failureCallback,
-                                final ResponseConverter<T, R> responseConverter) {
-
-        mSuccessCallback = successCallback;
-        mFailureCallback = failureCallback;
+    public BaseResponseCallback(@NonNull final Notifiable<T, Throwable> notifiable,
+                                @NonNull final ResponseConverter<T, R> responseConverter) {
+        mNotifiable = notifiable;
         mResponseConverter = responseConverter;
     }
 
@@ -25,16 +23,16 @@ public class BaseResponseCallback<T, R> implements Callback<R> {
     public void onResponse(@NonNull final Call<R> call, @NonNull final Response<R> response) {
 
         if (response.isSuccessful()) {
-            mSuccessCallback.onSuccess(mResponseConverter.convertFrom(response));
+            mNotifiable.success(mResponseConverter.convertFrom(response));
         } else {
-            mFailureCallback.onFailure(new RuntimeException("Error - Response not successful"));
+            mNotifiable.failure(new RuntimeException("Error - Response not successful"));
         }
     }
 
     @Override
     public void onFailure(@NonNull final Call<R> call, @NonNull final Throwable t) {
 
-        mFailureCallback.onFailure(t);
+        mNotifiable.failure(t);
     }
 
     public interface ResponseConverter<T, R> {

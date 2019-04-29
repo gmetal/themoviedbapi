@@ -1,25 +1,14 @@
 package com.github.gmetal.data.repository.datasource;
 
-import com.github.gmetal.data.repository.callback.FailureCallback;
-import com.github.gmetal.data.repository.callback.PagedListSuccessCallback;
-import com.github.gmetal.data.repository.callback.SuccessCallback;
+import com.github.gmetal.domain.model.PagedEntity;
 import com.github.gmetal.domain.model.MediaInfo;
 import com.github.gmetal.domain.model.MovieMediaDetail;
+import com.github.gmetal.lib.Notifiable;
 
 public interface MoviesDataSource {
 
-    interface MovieListSuccessCallback extends PagedListSuccessCallback<MediaInfo> {
-
-    }
-
-    interface MovieSuccessCallback extends SuccessCallback<MovieMediaDetail> {
-
-    }
-
     void getLatestMovies(final int pageNumber,
-                         final MovieListSuccessCallback successCallback,
-                         final FailureCallback failureCallback);
+                         final Notifiable<PagedEntity<MediaInfo>, Throwable> notifiable);
 
-    void getById(final String id, final MovieSuccessCallback successCallback,
-                 final FailureCallback failureCallback);
+    void getById(final String id, final Notifiable<MovieMediaDetail, Throwable> notifiable);
 }

@@ -1,10 +1,13 @@
 package com.github.gmetal.data.repository.datasource;
 
 import com.github.gmetal.data.entity.MovieEntity;
+import com.github.gmetal.domain.model.PagedEntity;
 import com.github.gmetal.data.net.TheMovieDBService;
 import com.github.gmetal.data.repository.callback.BaseResponseCallback;
-import com.github.gmetal.data.repository.callback.FailureCallback;
 import com.github.gmetal.data.repository.paged.MovieMediaLoader;
+import com.github.gmetal.domain.model.MediaInfo;
+import com.github.gmetal.domain.model.MovieMediaDetail;
+import com.github.gmetal.lib.Notifiable;
 
 import retrofit2.Call;
 
@@ -24,18 +27,18 @@ public class RemoteMoviesDataSource implements MoviesDataSource {
     }
 
     @Override
-    public void getLatestMovies(int pageNumber, MovieListSuccessCallback successCallback,
-                                FailureCallback failureCallback) {
+    public void getLatestMovies(final int pageNumber,
+                                final Notifiable<PagedEntity<MediaInfo>, Throwable> notifiable) {
 
-        mMoviesMediaLoader.loadData(pageNumber, successCallback, failureCallback);
+        mMoviesMediaLoader.loadData(pageNumber, notifiable);
     }
 
     @Override
-    public void getById(final String id, final MovieSuccessCallback successCallback,
-                        final FailureCallback failureCallback) {
+    public void getById(final String id,
+                        final Notifiable<MovieMediaDetail, Throwable> notifiable) {
 
         Call<MovieEntity> movieById = mMovieDbService.getMovieById(id, mApiKey);
 
-        movieById.enqueue(new BaseResponseCallback<>(successCallback, failureCallback, r -> convertAsMediaDetail(r.body())));
+        movieById.enqueue(new BaseResponseCallback<>(notifiable, r -> convertAsMediaDetail(r.body())));
     }
 }

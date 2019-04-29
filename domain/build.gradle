@@ -31,6 +31,7 @@ dependencies {
 
     implementation "org.parceler:parceler-api:$rootProject.ext.parcelerVersion"
     annotationProcessor "org.parceler:parceler:$rootProject.ext.parcelerVersion"
+    compile project(path: ':lib')
 }
 
 

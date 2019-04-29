@@ -1,7 +1,9 @@
 package com.github.gmetal.data.moviedbapi.mvp
 
-import com.github.gmetal.domain.model.MediaInfo
+import com.github.gmetal.domain.model.PagedEntity
 import com.github.gmetal.data.repository.datasource.MoviesDataSource
+import com.github.gmetal.domain.model.MediaInfo
+import com.github.gmetal.lib.Notifiable
 
 class MovieListPresenter(private val movieDataSource: MoviesDataSource) {
 
@@ -30,10 +32,12 @@ class MovieListPresenter(private val movieDataSource: MoviesDataSource) {
         view?.showLoading()
 
         movieDataSource.getLatestMovies(this.pageNumber,
-                { mutableList: MutableList<MediaInfo>, i: Int, i1: Int, i2: Int?, i3: Int? ->
-                    this.view?.setData(mutableList)
-                    isLoadingMore = false
-                },
-                { t: Throwable -> view?.showError(t) })
+                Notifiable<PagedEntity<MediaInfo>, Throwable>(
+                        { pagedEntity ->
+                            this.view?.setData(pagedEntity.dataList)
+                            isLoadingMore = false
+                        },
+                        { t: Throwable -> view?.showError(t) }
+                ))
     }
 }

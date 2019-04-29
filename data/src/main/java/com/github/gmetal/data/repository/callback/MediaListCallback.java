@@ -2,64 +2,64 @@ package com.github.gmetal.data.repository.callback;
 
 import androidx.annotation.NonNull;
 
+import com.github.gmetal.domain.model.PagedEntity;
 import com.github.gmetal.data.entity.response.BasePagedResponseEntity;
-import com.github.gmetal.domain.model.MediaInfo;
+import com.github.gmetal.lib.Notifiable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MediaListCallback<T extends BasePagedResponseEntity<O>, O>
-        extends BasePagedRetrofitCallback<T, MediaInfo> {
+public class MediaListCallback<PagedResponse extends BasePagedResponseEntity<DataObject>, DataObject, DomainObject> implements Callback<PagedResponse> {
 
-    private final ObjectToMediaInfo<O> mObjectToMediaInfo;
+    private final ObjectToMediaInfo<DataObject, DomainObject> mObjectToMediaInfo;
+    private final Notifiable<PagedEntity<DomainObject>, Throwable> mNotifiable;
 
-    public MediaListCallback(final PagedListSuccessCallback<MediaInfo> successCallback,
-                             final FailureCallback failureCallback,
-                             final ObjectToMediaInfo<O> objectToMediaInfo) {
+    public MediaListCallback(@NonNull final Notifiable<PagedEntity<DomainObject>, Throwable> notifiable,
+                             @NonNull final ObjectToMediaInfo<DataObject, DomainObject> objectToMediaInfo) {
 
-        super(successCallback, failureCallback);
         mObjectToMediaInfo = objectToMediaInfo;
+        mNotifiable = notifiable;
     }
 
     @Override
-    public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
+    public void onResponse(@NonNull Call<PagedResponse> call, @NonNull Response<PagedResponse> response) {
 
-        super.onResponse(call, response);
         if (response.isSuccessful()) {
-            List<MediaInfo> mediaInfos = new ArrayList<>();
-            T responseBody = response.body();
+            List<DomainObject> mediaInfos = new ArrayList<>();
+            PagedResponse responseBody = response.body();
 
             if (responseBody != null) {
-                List<O> results = responseBody.getResultObjects();
+                List<DataObject> results = responseBody.getResultObjects();
 
                 for (int i = 0; i < results.size(); i++) {
                     mediaInfos.add(mObjectToMediaInfo.parse(results.get(i)));
                 }
 
-                mSuccessCallback.onSuccess(mediaInfos, 0, responseBody.mTotalResults,
+                mNotifiable.success(new PagedEntity<DomainObject>(mediaInfos, 0, responseBody.mTotalResults,
                         responseBody.mPage == 1 ? null : responseBody.mPage - 1,
-                        responseBody.mPage + 1);
+                        responseBody.mPage + 1));
+
             } else {
-                mFailureCallback.onFailure(new RuntimeException("No Data!"));
+                mNotifiable.failure(new RuntimeException("No Data!"));
             }
         } else {
-            mFailureCallback.onFailure(new RuntimeException("Error!"));
+            mNotifiable.failure(new RuntimeException("Error!"));
         }
     }
 
     @Override
-    public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
+    public void onFailure(@NonNull Call<PagedResponse> call, @NonNull Throwable t) {
 
-        super.onFailure(call, t);
-        mFailureCallback.onFailure(t);
+        mNotifiable.failure(t);
     }
 
     @FunctionalInterface
-    public interface ObjectToMediaInfo<O> {
+    public interface ObjectToMediaInfo<O, DomainObject> {
 
-        MediaInfo parse(O obj);
+        DomainObject parse(O obj);
     }
 }
