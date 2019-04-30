@@ -1,6 +1,6 @@
-package com.github.gmetal.data.moviedbapi.injection
+package com.github.gmetal.presentation.ui.movielist.injection
 
-import com.github.gmetal.data.moviedbapi.MainActivity
+import com.github.gmetal.presentation.ui.movielist.MainActivity
 
 import dagger.Subcomponent
 import dagger.android.AndroidInjector

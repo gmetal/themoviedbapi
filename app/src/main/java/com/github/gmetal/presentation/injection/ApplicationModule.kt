@@ -1,8 +1,8 @@
-package com.github.gmetal.data.moviedbapi.injection
+package com.github.gmetal.presentation.injection
 
 import android.content.Context
 import com.github.gmetal.data.moviedbapi.BuildConfig
-import com.github.gmetal.data.moviedbapi.SampleApplication
+import com.github.gmetal.presentation.SampleApplication
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named
@@ -14,7 +14,6 @@ class ApplicationModule {
     @Singleton
     @Provides
     fun providesContext(application: SampleApplication): Context = application.applicationContext
-
 
     @Singleton
     @Provides

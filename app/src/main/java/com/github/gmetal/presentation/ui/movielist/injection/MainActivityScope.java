@@ -1,4 +1,4 @@
-package com.github.gmetal.data.moviedbapi.injection;
+package com.github.gmetal.presentation.ui.movielist.injection;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

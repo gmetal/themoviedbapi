@@ -1,7 +1,7 @@
-package com.github.gmetal.data.moviedbapi.injection
+package com.github.gmetal.presentation.ui.movielist.injection
 
-import com.github.gmetal.data.moviedbapi.mvp.MovieListPresenter
 import com.github.gmetal.data.repository.TheMovieDbRepository
+import com.github.gmetal.presentation.ui.movielist.mvp.MovieListPresenter
 import dagger.Module
 import dagger.Provides
 

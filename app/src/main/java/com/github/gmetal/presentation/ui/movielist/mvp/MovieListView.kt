@@ -1,4 +1,4 @@
-package com.github.gmetal.data.moviedbapi.mvp
+package com.github.gmetal.presentation.ui.movielist.mvp
 
 import com.github.gmetal.domain.model.MediaInfo
 

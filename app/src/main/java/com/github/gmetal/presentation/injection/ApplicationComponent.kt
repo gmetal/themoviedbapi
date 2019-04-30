@@ -1,9 +1,9 @@
-package com.github.gmetal.data.moviedbapi.injection
-
+package com.github.gmetal.presentation.injection
 
 import com.github.gmetal.data.injection.DataModule
 import com.github.gmetal.data.injection.NetModule
-import com.github.gmetal.data.moviedbapi.SampleApplication
+import com.github.gmetal.presentation.SampleApplication
+import com.github.gmetal.presentation.ui.movielist.injection.UiBindersModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule

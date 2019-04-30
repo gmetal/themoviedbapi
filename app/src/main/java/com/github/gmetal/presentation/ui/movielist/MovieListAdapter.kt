@@ -1,10 +1,11 @@
-package com.github.gmetal.data.moviedbapi
+package com.github.gmetal.presentation.ui.movielist
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.github.gmetal.data.moviedbapi.R
 import com.github.gmetal.domain.model.MediaInfo
 
 class MovieListAdapter(val inflater: LayoutInflater) : RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {

@@ -1,19 +1,20 @@
-package com.github.gmetal.data.moviedbapi
+package com.github.gmetal.presentation.ui.movielist
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.github.gmetal.data.moviedbapi.mvp.MovieListPresenter
-import com.github.gmetal.data.moviedbapi.mvp.MovieListView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.github.gmetal.data.moviedbapi.R
 import com.github.gmetal.domain.model.MediaInfo
+import com.github.gmetal.presentation.ui.movielist.mvp.MovieListPresenter
+import com.github.gmetal.presentation.ui.movielist.mvp.MovieListView
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 

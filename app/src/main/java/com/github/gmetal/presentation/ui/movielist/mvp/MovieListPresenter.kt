@@ -1,8 +1,8 @@
-package com.github.gmetal.data.moviedbapi.mvp
+package com.github.gmetal.presentation.ui.movielist.mvp
 
-import com.github.gmetal.domain.model.PagedEntity
 import com.github.gmetal.data.repository.datasource.MoviesDataSource
 import com.github.gmetal.domain.model.MediaInfo
+import com.github.gmetal.domain.model.PagedEntity
 import com.github.gmetal.lib.Notifiable
 
 class MovieListPresenter(private val movieDataSource: MoviesDataSource) {
