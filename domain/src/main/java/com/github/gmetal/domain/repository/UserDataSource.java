@@ -1,4 +1,4 @@
-package com.github.gmetal.data.repository.datasource;
+package com.github.gmetal.domain.repository;
 
 import com.github.gmetal.domain.model.Account;
 import com.github.gmetal.domain.model.ServerSession;

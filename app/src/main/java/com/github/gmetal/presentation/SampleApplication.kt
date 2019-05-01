@@ -5,8 +5,8 @@ import android.app.Activity
 import android.app.Application
 import com.github.gmetal.data.injection.DataModule
 import com.github.gmetal.data.injection.NetModule
-import com.github.gmetal.data.moviedbapi.injection.DaggerApplicationComponent
 import com.github.gmetal.presentation.injection.ApplicationModule
+import com.github.gmetal.presentation.injection.DaggerApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector

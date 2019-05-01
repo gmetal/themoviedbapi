@@ -8,6 +8,7 @@ import com.github.gmetal.data.repository.callback.BaseResponseCallback;
 import com.github.gmetal.data.repository.paged.TvMediaLoader;
 import com.github.gmetal.domain.model.MediaInfo;
 import com.github.gmetal.domain.model.TvMediaDetail;
+import com.github.gmetal.domain.repository.TvSeriesDataSource;
 import com.github.gmetal.lib.Notifiable;
 
 import retrofit2.Call;

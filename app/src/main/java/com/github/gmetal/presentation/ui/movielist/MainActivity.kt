@@ -37,14 +37,14 @@ class MainActivity : AppCompatActivity(), MovieListView {
         loadingIndicator = findViewById(R.id.loading)
         emptyView = findViewById(R.id.empty_view)
 
-        movieList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        movieList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
     }
 
     override fun onResume() {
         super.onResume()
 
         presenter.attachView(this)
-        presenter.loadData()
+        presenter.loadData(1)
     }
 
     override fun onStop() {

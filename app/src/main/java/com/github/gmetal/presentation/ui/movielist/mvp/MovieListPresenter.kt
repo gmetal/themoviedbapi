@@ -1,14 +1,13 @@
 package com.github.gmetal.presentation.ui.movielist.mvp
 
-import com.github.gmetal.data.repository.datasource.MoviesDataSource
+import com.github.gmetal.domain.interactor.GetLatestMoviesUseCase
 import com.github.gmetal.domain.model.MediaInfo
 import com.github.gmetal.domain.model.PagedEntity
 import com.github.gmetal.lib.Notifiable
 
-class MovieListPresenter(private val movieDataSource: MoviesDataSource) {
+class MovieListPresenter(private val latestMoviesUseCase: GetLatestMoviesUseCase) {
 
     var view: MovieListView? = null
-    var pageNumber: Int = 1
     var isLoadingMore: Boolean = false
 
     fun attachView(view: MovieListView) {
@@ -21,7 +20,7 @@ class MovieListPresenter(private val movieDataSource: MoviesDataSource) {
         this.view = null
     }
 
-    fun loadData() {
+    fun loadData(pageNumber: Int) {
 
         if (isLoadingMore) {
             return
@@ -31,13 +30,11 @@ class MovieListPresenter(private val movieDataSource: MoviesDataSource) {
 
         view?.showLoading()
 
-        movieDataSource.getLatestMovies(this.pageNumber,
-                Notifiable<PagedEntity<MediaInfo>, Throwable>(
-                        { pagedEntity ->
-                            this.view?.setData(pagedEntity.dataList)
-                            isLoadingMore = false
-                        },
-                        { t: Throwable -> view?.showError(t) }
-                ))
+        latestMoviesUseCase.buildUseCase(GetLatestMoviesUseCase.Params.forPage(pageNumber), Notifiable<PagedEntity<MediaInfo>, Throwable>(
+                { pagedEntity ->
+                    view?.setData(pagedEntity.dataList)
+                    isLoadingMore = false
+                },
+                { t: Throwable -> view?.showError(t) }))
     }
 }
