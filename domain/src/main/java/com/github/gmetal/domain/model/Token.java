@@ -1,20 +1,17 @@
 package com.github.gmetal.domain.model;
 
-import org.parceler.Parcel;
-
-@Parcel
 public class Token {
 
-    boolean success;
-    String expiresAt;
+    protected boolean success;
+    protected String expiresAt;
 
-    String requestToken;
+    protected String requestToken;
 
     public Token() {
 
-        success = false;
-        expiresAt = "";
-        requestToken = "";
+        setSuccess(false);
+        setExpiresAt("");
+        setRequestToken("");
     }
 
     public boolean isSuccess() {

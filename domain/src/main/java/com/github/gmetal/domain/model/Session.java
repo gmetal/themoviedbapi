@@ -58,6 +58,7 @@ public class Session {
 
         mRequestToken = requestToken;
     }
+
     public void setSessionId(String sessionId) {
 
         mSessionId = sessionId;

@@ -1,23 +1,22 @@
 package com.github.gmetal.domain.model;
 
-import org.parceler.Parcel;
+import static com.github.gmetal.domain.model.MediaItem.IMAGE_PREFIX;
 
-@Parcel
-public class TvSeason extends MediaInfoDataObject {
+public class TvSeason {
 
-    Integer id;
-    String airDate;
-    Integer episodeCount;
-    Integer seasonNumber;
-    String posterPath;
+    protected Integer id;
+    protected String airDate;
+    protected Integer episodeCount;
+    protected Integer seasonNumber;
+    protected String posterPath;
 
     public TvSeason() {
 
-        this.id = 0;
-        this.airDate = "";
-        this.episodeCount = 0;
-        this.seasonNumber = 0;
-        this.posterPath = "";
+        this.setId(0);
+        this.setAirDate("");
+        this.setEpisodeCount(0);
+        this.setSeasonNumber(0);
+        this.setPosterPath("");
     }
 
     public void setId(final Integer id) {
@@ -30,29 +29,19 @@ public class TvSeason extends MediaInfoDataObject {
         return this.id;
     }
 
-    @Override
     public String getMediaId() {
 
-        return Integer.toString(this.id);
+        return Integer.toString(this.getId());
     }
 
-    @Override
     public String getImage() {
 
-        return IMAGE_PREFIX + posterPath;
+        return IMAGE_PREFIX + getPosterPath();
     }
 
-    @Override
     public String getTitle() {
 
-        return "SeasonEntity " + seasonNumber;
-    }
-
-    public static TvSeason getLoadingObject() {
-
-        TvSeason season = new TvSeason();
-        season.setIsLoadingObject(true);
-        return season;
+        return "SeasonEntity " + getSeasonNumber();
     }
 
     public String getAirDate() {

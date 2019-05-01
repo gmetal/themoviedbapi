@@ -1,18 +1,15 @@
 package com.github.gmetal.domain.model;
 
-import org.parceler.Parcel;
-
-@Parcel
 public class ServerSession {
 
-    boolean success;
+    protected boolean success;
 
-    String sessionId;
+    protected String sessionId;
 
     public ServerSession() {
 
-        success = false;
-        sessionId = "";
+        setSuccess(false);
+        setSessionId("");
     }
 
     public boolean isSuccess() {

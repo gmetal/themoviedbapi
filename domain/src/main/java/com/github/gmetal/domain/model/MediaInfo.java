@@ -1,47 +1,34 @@
 package com.github.gmetal.domain.model;
 
-import org.parceler.Parcel;
-
 import java.util.Objects;
 
-@Parcel
-public class MediaInfo extends MediaInfoDataObject {
+public class MediaInfo {
 
-    String name;
-    boolean isTv;
+    protected String name;
+    protected boolean isTv;
 
-    String dbId;
+    protected String dbId;
 
-    String imageURL;
-    String overview;
-    Integer voteCount;
-    Float voteAverage;
+    protected String imageURL;
+    protected String overview;
+    protected Integer voteCount;
+    protected Float voteAverage;
 
     public MediaInfo() {
 
         super();
     }
-
-    public static MediaInfo getLoadingMediaInfo() {
-
-        MediaInfo mediaInfo = new MediaInfo();
-        mediaInfo.setIsLoadingObject(true);
-        return mediaInfo;
-    }
-
-    @Override
+    
     public String getMediaId() {
 
         return this.getDbId();
     }
 
-    @Override
     public String getImage() {
 
         return getImageURL();
     }
 
-    @Override
     public String getTitle() {
 
         return getName();
@@ -123,18 +110,18 @@ public class MediaInfo extends MediaInfoDataObject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MediaInfo mediaInfo = (MediaInfo) o;
-        return isTv == mediaInfo.isTv
-                && Objects.equals(name, mediaInfo.name)
-                && Objects.equals(dbId, mediaInfo.dbId)
-                && Objects.equals(imageURL, mediaInfo.imageURL)
-                && Objects.equals(overview, mediaInfo.overview)
-                && Objects.equals(voteCount, mediaInfo.voteCount)
-                && Objects.equals(voteAverage, mediaInfo.voteAverage);
+        return isTv() == mediaInfo.isTv()
+                && Objects.equals(getName(), mediaInfo.getName())
+                && Objects.equals(getDbId(), mediaInfo.getDbId())
+                && Objects.equals(getImageURL(), mediaInfo.getImageURL())
+                && Objects.equals(getOverview(), mediaInfo.getOverview())
+                && Objects.equals(getVoteCount(), mediaInfo.getVoteCount())
+                && Objects.equals(getVoteAverage(), mediaInfo.getVoteAverage());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(name, isTv, dbId, imageURL, overview, voteCount, voteAverage);
+        return Objects.hash(getName(), isTv(), getDbId(), getImageURL(), getOverview(), getVoteCount(), getVoteAverage());
     }
 }

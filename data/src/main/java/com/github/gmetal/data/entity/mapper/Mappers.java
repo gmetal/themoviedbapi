@@ -65,30 +65,30 @@ public class Mappers {
     public static MovieMediaDetail convertAsMediaDetail(final MovieEntity movieEntity) {
 
         final MovieMediaDetail mediaDetail = new MovieMediaDetail();
-        mediaDetail.adult = movieEntity.adult;
-        mediaDetail.backdropPath = MediaItem.IMAGE_PREFIX + movieEntity.backdropPath;
-        mediaDetail.belongsToCollection = movieEntity.belongsToCollection;
-        mediaDetail.budget = movieEntity.budget;
+        mediaDetail.setAdult(movieEntity.adult);
+        mediaDetail.setBackdropPath(MediaItem.IMAGE_PREFIX + movieEntity.backdropPath);
+        mediaDetail.setBelongsToCollection(movieEntity.belongsToCollection);
+        mediaDetail.setBudget(movieEntity.budget);
         for (int i = 0; i < movieEntity.genreEntities.size(); i++) {
-            mediaDetail.genres.add(movieEntity.genreEntities.get(i).name);
+            mediaDetail.getGenres().add(movieEntity.genreEntities.get(i).name);
         }
-        mediaDetail.homepage = movieEntity.homepage;
-        mediaDetail.id = movieEntity.id;
-        mediaDetail.imdbId = movieEntity.imdbId;
-        mediaDetail.originalLanguage = movieEntity.originalLanguage;
-        mediaDetail.originalTitle = movieEntity.originalTitle;
-        mediaDetail.overview = movieEntity.overview;
-        mediaDetail.popularity = movieEntity.popularity;
-        mediaDetail.posterPath = MediaItem.IMAGE_PREFIX + movieEntity.posterPath;
-        mediaDetail.releaseDate = movieEntity.releaseDate;
-        mediaDetail.revenue = movieEntity.revenue;
-        mediaDetail.runtime = movieEntity.runtime;
-        mediaDetail.status = movieEntity.status;
-        mediaDetail.tagline = movieEntity.tagline;
-        mediaDetail.title = movieEntity.title;
-        mediaDetail.video = movieEntity.video;
-        mediaDetail.voteAverage = movieEntity.voteAverage;
-        mediaDetail.voteCount = movieEntity.voteCount;
+        mediaDetail.setHomepage(movieEntity.homepage);
+        mediaDetail.setId(movieEntity.id);
+        mediaDetail.setImdbId(movieEntity.imdbId);
+        mediaDetail.setOriginalLanguage(movieEntity.originalLanguage);
+        mediaDetail.setOriginalTitle(movieEntity.originalTitle);
+        mediaDetail.setOverview(movieEntity.overview);
+        mediaDetail.setPopularity(movieEntity.popularity);
+        mediaDetail.setPosterPath(MediaItem.IMAGE_PREFIX + movieEntity.posterPath);
+        mediaDetail.setReleaseDate(movieEntity.releaseDate);
+        mediaDetail.setRevenue(movieEntity.revenue);
+        mediaDetail.setRuntime(movieEntity.runtime);
+        mediaDetail.setStatus(movieEntity.status);
+        mediaDetail.setTagline(movieEntity.tagline);
+        mediaDetail.setTitle(movieEntity.title);
+        mediaDetail.setVideo(movieEntity.video);
+        mediaDetail.setVoteAverage(movieEntity.voteAverage);
+        mediaDetail.setVoteCount(movieEntity.voteCount);
 
         return mediaDetail;
     }
@@ -117,24 +117,24 @@ public class Mappers {
     public static TvMediaDetail convert(final TvShowEntity response) {
 
         final TvMediaDetail tvMediaDetail = new TvMediaDetail();
-        tvMediaDetail.adult = false;
-        tvMediaDetail.backdropPath = MediaItem.IMAGE_PREFIX + response.backdropPath;
+        tvMediaDetail.setAdult(false);
+        tvMediaDetail.setBackdropPath(MediaItem.IMAGE_PREFIX + response.backdropPath);
         for (int i = 0; i < response.genreEntities.size(); i++) {
-            tvMediaDetail.genres.add(response.genreEntities.get(i).name);
+            tvMediaDetail.getGenres().add(response.genreEntities.get(i).name);
         }
-        tvMediaDetail.homepage = response.homepage;
-        tvMediaDetail.id = response.id;
-        tvMediaDetail.originalLanguage = response.originalLanguage;
-        tvMediaDetail.originalTitle = response.originalName;
-        tvMediaDetail.overview = response.overview;
-        tvMediaDetail.popularity = response.popularity;
-        tvMediaDetail.posterPath = MediaItem.IMAGE_PREFIX + response.posterPath;
-        tvMediaDetail.releaseDate = response.firstAirDate;
-        tvMediaDetail.status = response.status;
-        tvMediaDetail.title = response.name;
-        tvMediaDetail.video = true;
-        tvMediaDetail.voteAverage = response.voteAverage;
-        tvMediaDetail.voteCount = response.voteCount;
+        tvMediaDetail.setHomepage(response.homepage);
+        tvMediaDetail.setId(response.id);
+        tvMediaDetail.setOriginalLanguage(response.originalLanguage);
+        tvMediaDetail.setOriginalTitle(response.originalName);
+        tvMediaDetail.setOverview(response.overview);
+        tvMediaDetail.setPopularity(response.popularity);
+        tvMediaDetail.setPosterPath(MediaItem.IMAGE_PREFIX + response.posterPath);
+        tvMediaDetail.setReleaseDate(response.firstAirDate);
+        tvMediaDetail.setStatus(response.status);
+        tvMediaDetail.setTitle(response.name);
+        tvMediaDetail.setVideo(true);
+        tvMediaDetail.setVoteAverage(response.voteAverage);
+        tvMediaDetail.setVoteCount(response.voteCount);
 
         for (int i = 0; i < response.seasonEntities.size(); i++) {
             tvMediaDetail.getSeasons().add(convert(response.seasonEntities.get(i)));

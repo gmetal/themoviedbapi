@@ -1,17 +1,14 @@
 package com.github.gmetal.domain.model;
 
-import org.parceler.Parcel;
-
-@Parcel
 public class Account {
 
-    String avatarHash;
-    Integer id;
-    String iso6391;
-    String iso31661;
-    String name;
-    boolean includeAdult;
-    String username;
+    protected String avatarHash;
+    protected Integer id;
+    protected String iso6391;
+    protected String iso31661;
+    protected String name;
+    protected boolean includeAdult;
+    protected String username;
 
     public Account() {
 
