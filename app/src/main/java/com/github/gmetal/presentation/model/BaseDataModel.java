@@ -1,15 +1,18 @@
-package com.github.gmetal.domain.model;
+package com.github.gmetal.presentation.model;
 
-public class BaseDataObject implements LoadingObject {
+import org.parceler.Parcel;
+
+@Parcel
+public class BaseDataModel implements LoadingModel {
 
     protected boolean isLoadingObject;
 
-    public BaseDataObject() {
+    public BaseDataModel() {
 
         this(false);
     }
 
-    public BaseDataObject(boolean isLoadingObject) {
+    public BaseDataModel(boolean isLoadingObject) {
 
         this.isLoadingObject = isLoadingObject;
     }
