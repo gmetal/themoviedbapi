@@ -1,7 +1,5 @@
 package com.github.gmetal.domain.interactor;
 
-import androidx.annotation.NonNull;
-
 import com.github.gmetal.domain.model.MediaInfo;
 import com.github.gmetal.domain.model.PagedEntity;
 import com.github.gmetal.domain.repository.MoviesDataSource;
@@ -17,7 +15,7 @@ public class GetLatestMoviesUseCase extends UseCase<GetLatestMoviesUseCase.Param
     }
 
     @Override
-    public void buildUseCase(@NonNull final GetLatestMoviesUseCase.Params params, @NonNull final Notifiable<PagedEntity<MediaInfo>, Throwable> notifiable) {
+    public void buildUseCase(final GetLatestMoviesUseCase.Params params, final Notifiable<PagedEntity<MediaInfo>, Throwable> notifiable) {
 
         mMoviesDataSource.getLatestMovies(params.pageNumber, notifiable);
     }

@@ -1,7 +1,5 @@
 package com.github.gmetal.domain.model;
 
-import androidx.annotation.Nullable;
-
 import java.util.List;
 
 public class PagedEntity<O> {
@@ -13,7 +11,7 @@ public class PagedEntity<O> {
     private final Integer mNextPageKey;
 
     public PagedEntity(final List<O> dataList, int position, int totalCount,
-                       @Nullable Integer previousPageKey, @Nullable final Integer nextPageKey) {
+                       Integer previousPageKey, final Integer nextPageKey) {
         mDataList = dataList;
         mPosition = position;
         mTotalCount = totalCount;

@@ -18,7 +18,7 @@ public class MediaInfo {
 
         super();
     }
-    
+
     public String getMediaId() {
 
         return this.getDbId();

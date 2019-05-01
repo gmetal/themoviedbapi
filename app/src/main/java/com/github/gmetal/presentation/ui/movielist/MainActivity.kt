@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.gmetal.data.moviedbapi.R
-import com.github.gmetal.domain.model.MediaInfo
+import com.github.gmetal.presentation.model.MovieModel
 import com.github.gmetal.presentation.ui.movielist.mvp.MovieListPresenter
 import com.github.gmetal.presentation.ui.movielist.mvp.MovieListView
 import com.google.android.material.snackbar.Snackbar
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(), MovieListView {
         Snackbar.make(findViewById(android.R.id.content), error.message!!, LENGTH_LONG).show()
     }
 
-    override fun setData(data: MutableList<MediaInfo>) {
+    override fun setData(data: MutableList<MovieModel>) {
 
         val adapter = MovieListAdapter(LayoutInflater.from(this))
         adapter.data.addAll(data)
