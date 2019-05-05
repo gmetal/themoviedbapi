@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class MainActivityModule {
+class MovieListModule {
 
     @Provides
     fun providesLatestMoviesUseCase(moviesDataSource: MoviesDataSource) = GetLatestMoviesUseCase(moviesDataSource)

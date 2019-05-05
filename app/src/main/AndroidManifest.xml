@@ -13,7 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.github.gmetal.presentation.ui.movielist.MainActivity">
+        <activity
+            android:name="com.github.gmetal.presentation.ui.moviedetail.MovieDetailActivity"
+            android:label="@string/movie_detail_activity" />
+        <activity
+            android:name="com.github.gmetal.presentation.ui.movielist.MovieListActivity"
+            android:label="@string/movie_list_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

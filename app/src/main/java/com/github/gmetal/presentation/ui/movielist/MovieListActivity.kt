@@ -1,28 +1,25 @@
 package com.github.gmetal.presentation.ui.movielist
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View.GONE
-import android.view.View.VISIBLE
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.gmetal.data.moviedbapi.R
 import com.github.gmetal.presentation.model.MovieModel
+import com.github.gmetal.presentation.ui.common.mvp.ViewDelegate
+import com.github.gmetal.presentation.ui.moviedetail.MovieDetailActivity
 import com.github.gmetal.presentation.ui.movielist.mvp.MovieListPresenter
 import com.github.gmetal.presentation.ui.movielist.mvp.MovieListView
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), MovieListView {
+class MovieListActivity : AppCompatActivity(), MovieListView, View.OnClickListener {
 
     lateinit var movieList: RecyclerView
-    lateinit var loadingIndicator: ProgressBar
-    lateinit var emptyView: TextView
+    lateinit var viewDelegate: ViewDelegate
     @Inject
     lateinit var presenter: MovieListPresenter
 
@@ -31,11 +28,10 @@ class MainActivity : AppCompatActivity(), MovieListView {
         AndroidInjection.inject(this)
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_movie_list)
 
+        viewDelegate = ViewDelegate(findViewById(android.R.id.content), R.id.movie_list)
         movieList = findViewById(R.id.movie_list)
-        loadingIndicator = findViewById(R.id.loading)
-        emptyView = findViewById(R.id.empty_view)
 
         movieList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
     }
@@ -53,14 +49,15 @@ class MainActivity : AppCompatActivity(), MovieListView {
         presenter.detachView()
     }
 
+    // MovieListView
     override fun showError(error: Throwable) {
 
-        Snackbar.make(findViewById(android.R.id.content), error.message!!, LENGTH_LONG).show()
+        viewDelegate.showError(error)
     }
 
     override fun setData(data: MutableList<MovieModel>) {
 
-        val adapter = MovieListAdapter(LayoutInflater.from(this))
+        val adapter = MovieListAdapter(LayoutInflater.from(this), this)
         adapter.data.addAll(data)
 
         movieList.adapter = adapter
@@ -68,20 +65,20 @@ class MainActivity : AppCompatActivity(), MovieListView {
     }
 
     override fun showContent() {
-        movieList.visibility = VISIBLE
-        loadingIndicator.visibility = GONE
-        emptyView.visibility = GONE
+        viewDelegate.showContent()
     }
 
     override fun showLoading() {
-        movieList.visibility = GONE
-        loadingIndicator.visibility = VISIBLE
-        emptyView.visibility = VISIBLE
+        viewDelegate.showLoading()
     }
 
     override fun showEmpty(isError: Boolean) {
-        movieList.visibility = GONE
-        loadingIndicator.visibility = GONE
-        emptyView.visibility = VISIBLE
+        viewDelegate.showEmpty(isError)
+    }
+
+    // View.OnClickListener
+    override fun onClick(view: View?) {
+
+        startActivity(Intent(this, MovieDetailActivity::class.java))
     }
 }

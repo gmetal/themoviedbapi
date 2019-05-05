@@ -8,10 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.gmetal.data.moviedbapi.R
 import com.github.gmetal.presentation.model.MovieModel
 
-class MovieListAdapter(val inflater: LayoutInflater) : RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
+class MovieListAdapter(
+        val inflater: LayoutInflater,
+        val onClickListener: View.OnClickListener
+) : RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
 
     var data: MutableList<MovieModel> = mutableListOf()
-    
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder =
             MovieListViewHolder(inflater.inflate(R.layout.list_movie_item, parent, false))
 
@@ -19,6 +22,7 @@ class MovieListAdapter(val inflater: LayoutInflater) : RecyclerView.Adapter<Movi
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
         holder.movieTitle.text = data[position].name
+        holder.itemView.setOnClickListener(onClickListener)
     }
 
     class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
