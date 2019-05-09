@@ -5,21 +5,12 @@ import com.github.gmetal.domain.model.MediaInfo
 import com.github.gmetal.domain.model.PagedEntity
 import com.github.gmetal.lib.Notifiable
 import com.github.gmetal.presentation.mappers.ModelMappers.asMovie
+import com.github.gmetal.presentation.model.MovieModel
+import com.github.gmetal.presentation.ui.common.mvp.BasePresenter
 
-class MovieListPresenter(private val latestMoviesUseCase: GetLatestMoviesUseCase) {
+class MovieListPresenter(private val latestMoviesUseCase: GetLatestMoviesUseCase) : BasePresenter<List<MovieModel>, MovieListView>() {
 
-    var view: MovieListView? = null
     var isLoadingMore: Boolean = false
-
-    fun attachView(view: MovieListView) {
-
-        this.view = view
-    }
-
-    fun detachView() {
-
-        this.view = null
-    }
 
     fun loadData(pageNumber: Int) {
 
@@ -35,7 +26,7 @@ class MovieListPresenter(private val latestMoviesUseCase: GetLatestMoviesUseCase
                 { pagedEntity ->
                     view?.setData(pagedEntity.dataList
                             .map { asMovie(it) }
-                            .toMutableList()
+                            .toList()
                     )
                     isLoadingMore = false
                 },

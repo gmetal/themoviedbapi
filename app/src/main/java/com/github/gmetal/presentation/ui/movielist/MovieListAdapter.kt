@@ -22,6 +22,7 @@ class MovieListAdapter(
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
         holder.movieTitle.text = data[position].name
+        holder.itemView.tag = data[position]
         holder.itemView.setOnClickListener(onClickListener)
     }
 

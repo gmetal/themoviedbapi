@@ -9,6 +9,7 @@ import com.github.gmetal.presentation.model.MovieModel
 import com.github.gmetal.presentation.ui.common.mvp.ViewDelegate
 import com.github.gmetal.presentation.ui.moviedetail.mvp.MovieDetailPresenter
 import com.github.gmetal.presentation.ui.moviedetail.mvp.MovieDetailView
+import com.squareup.picasso.Picasso
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -22,6 +23,9 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
 
     @Inject
     lateinit var presenter: MovieDetailPresenter
+
+    @Inject
+    lateinit var movieModelId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -42,12 +46,32 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
         viewDelegate = ViewDelegate(findViewById(android.R.id.content), R.id.view_elements_group)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        presenter.initialiseView(this)
+        presenter.loadData(movieModelId)
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        presenter.deinitialiseView()
+    }
+
     override fun showError(error: Throwable) {
         viewDelegate.showError(error)
     }
 
     override fun setData(data: MovieModel) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Picasso.get()
+                .load(data.imageURL)
+                .into(movieImageView)
+        movieTitleText.text = data.title
+        movieOverviewText.text = data.overview
+        movieVoteCountText.text = "${data.voteCount}"
+        movieVoteAverageText.text = "${data.voteAverage}"
+        showContent()
     }
 
     override fun showContent() {

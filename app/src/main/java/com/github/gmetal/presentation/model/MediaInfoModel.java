@@ -2,9 +2,7 @@ package com.github.gmetal.presentation.model;
 
 import com.github.gmetal.domain.model.MediaItem;
 
-import org.parceler.Parcel;
 
-@Parcel
 public abstract class MediaInfoModel extends BaseDataModel implements MediaItem {
 
     protected String overview;

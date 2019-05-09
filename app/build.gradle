@@ -43,7 +43,8 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "org.parceler:parceler-api:$rootProject.ext.parcelerVersion"
-    annotationProcessor "org.parceler:parceler:$rootProject.ext.parcelerVersion"
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    kapt "org.parceler:parceler:$rootProject.ext.parcelerVersion"
 
     implementation "androidx.recyclerview:recyclerview:1.0.0"
     implementation "com.google.dagger:dagger-android:$rootProject.ext.daggerVersion"
