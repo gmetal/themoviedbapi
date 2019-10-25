@@ -7,13 +7,14 @@ import com.github.gmetal.presentation.ui.moviedetail.injection.MovieDetailBinder
 import com.github.gmetal.presentation.ui.movielist.injection.MovieListBinder
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [DataModule::class, NetModule::class, AndroidSupportInjectionModule::class,
     ApplicationModule::class, MovieListBinder::class, MovieDetailBinder::class])
-interface ApplicationComponent {
+interface ApplicationComponent : AndroidInjector<SampleApplication> {
 
     @Component.Builder
     interface Builder {
@@ -31,5 +32,5 @@ interface ApplicationComponent {
     }
 
     // Injects
-    fun inject(application: SampleApplication)
+    override fun inject(application: SampleApplication)
 }

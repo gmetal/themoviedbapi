@@ -1,4 +1,7 @@
 apply plugin: "com.android.library"
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -27,15 +30,15 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":domain")
-    implementation "androidx.annotation:annotation:1.0.2"
+    implementation "androidx.annotation:annotation:1.1.0"
 
-    annotationProcessor "com.bluelinelabs:logansquare-compiler:$rootProject.ext.logansquareVersion"
+    kapt "com.bluelinelabs:logansquare-compiler:$rootProject.ext.logansquareVersion"
     implementation "com.bluelinelabs:logansquare:$rootProject.ext.logansquareVersion"
 
     implementation "com.google.dagger:dagger-android:$rootProject.ext.daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$rootProject.ext.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.ext.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.ext.daggerVersion"
 
     api "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     implementation("com.squareup.retrofit2:converter-simplexml:$rootProject.ext.retrofitVersion") {
@@ -44,5 +47,10 @@ dependencies {
         exclude module: "pp3"
     }
     api "com.github.aurae.retrofit2:converter-logansquare:1.4.1"
+    implementation "androidx.core:core-ktx:1.1.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
 
