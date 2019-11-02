@@ -1,10 +1,13 @@
 apply plugin: "com.android.library"
+apply plugin: "kotlin-kapt"
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
-apply plugin: "kotlin-kapt"
+apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultPublishConfig "release"
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
@@ -30,6 +33,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":domain")
+    implementation project(":lib")
     implementation "androidx.annotation:annotation:1.1.0"
 
     kapt "com.bluelinelabs:logansquare-compiler:$rootProject.ext.logansquareVersion"
@@ -41,16 +45,53 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$rootProject.ext.daggerVersion"
 
     api "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    implementation("com.squareup.retrofit2:converter-simplexml:$rootProject.ext.retrofitVersion") {
-        exclude module: "stax-api"
-        exclude module: "stax"
-        exclude module: "pp3"
-    }
     api "com.github.aurae.retrofit2:converter-logansquare:1.4.1"
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
-repositories {
-    mavenCentral()
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
 }
 
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+task classesJar(type: Jar) {
+    from "$buildDir/intermediates/classes/release"
+}
+
+artifacts {
+    archives classesJar
+    archives javadocJar
+    archives sourcesJar
+}
+
+group = GROUP
+version = VERSION_NAME
+
+if (android.productFlavors.size() > 0) {
+    android.libraryVariants.all { variant ->
+        if (variant.name.toLowerCase().contains("debug")) {
+            return
+        }
+
+        def bundleTask = tasks["bundle${variant.name.capitalize()}"]
+
+        artifacts {
+            archives(bundleTask.archivePath) {
+                builtBy bundleTask
+                name = project.name
+            }
+        }
+
+    }
+}
