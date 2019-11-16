@@ -1,13 +1,14 @@
 package com.github.gmetal.data.entity
 
-import com.bluelinelabs.logansquare.annotation.JsonField
-import com.bluelinelabs.logansquare.annotation.JsonObject
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonObject
+
+@Serializable
 open class BaseMoviesDbEntity {
-    @JsonField(name = ["status_message"])
+    @SerialName("status_message")
     var statusMessage: String? = null
 
-    @JsonField(name = ["status_code"])
+    @SerialName("status_code")
     var statusCode: Int = 0
 }

@@ -1,29 +1,29 @@
 package com.github.gmetal.data.entity
 
-import com.bluelinelabs.logansquare.annotation.JsonField
-import com.bluelinelabs.logansquare.annotation.JsonObject
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonObject
+@Serializable
 class AccountEntity : BaseMoviesDbEntity() {
 
-    @JsonField(name = ["avatar"])
+    @SerialName("avatar")
     var avatar: GravatarEntity? = null
 
-    @JsonField(name = ["id"])
+    @SerialName("id")
     var id: Int? = null
 
-    @JsonField(name = ["iso_639_1"])
+    @SerialName("iso_639_1")
     var iso6391: String? = null
 
-    @JsonField(name = ["iso_3166_1"])
+    @SerialName("iso_3166_1")
     var iso31661: String? = null
 
-    @JsonField(name = ["name"])
+    @SerialName("name")
     var name: String? = null
 
-    @JsonField(name = ["include_adult"])
+    @SerialName("include_adult")
     var includeAdult: Boolean = false
 
-    @JsonField(name = ["username"])
+    @SerialName("username")
     var username: String? = null
 }

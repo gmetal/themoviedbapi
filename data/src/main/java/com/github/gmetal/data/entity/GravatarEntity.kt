@@ -1,11 +1,11 @@
 package com.github.gmetal.data.entity
 
-import com.bluelinelabs.logansquare.annotation.JsonField
-import com.bluelinelabs.logansquare.annotation.JsonObject
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonObject
+@Serializable
 class GravatarEntity {
 
-    @JsonField(name = ["hash"])
+    @SerialName("hash")
     var hash: String? = null
 }

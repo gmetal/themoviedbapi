@@ -1,63 +1,61 @@
 package com.github.gmetal.data.entity
 
-import com.bluelinelabs.logansquare.annotation.JsonField
-import com.bluelinelabs.logansquare.annotation.JsonObject
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-import java.util.ArrayList
-
-@JsonObject
+@Serializable
 class TvShowEntity {
 
-    @JsonField(name = ["backdrop_path"])
+    @SerialName("backdrop_path")
     var backdropPath: String? = null
-    @JsonField(name = ["created_by"])
+    @SerialName("created_by")
     var createdByEntity: List<CreatedByEntity> = ArrayList()
-    @JsonField(name = ["episode_run_time"])
+    @SerialName("episode_run_time")
     var episodeRunTime: List<Int> = ArrayList()
-    @JsonField(name = ["first_air_date"])
+    @SerialName("first_air_date")
     var firstAirDate: String? = null
-    @JsonField(name = ["genreEntities"])
+    @SerialName("genreEntities")
     var genreEntities: List<GenreEntity> = ArrayList()
-    @JsonField(name = ["homepage"])
+    @SerialName("homepage")
     var homepage: String? = null
-    @JsonField(name = ["id"])
+    @SerialName("id")
     var id: Int? = null
-    @JsonField(name = ["in_production"])
+    @SerialName("in_production")
     var inProduction: Boolean? = null
-    @JsonField(name = ["languages"])
+    @SerialName("languages")
     var languages: List<String> = ArrayList()
-    @JsonField(name = ["last_air_date"])
+    @SerialName("last_air_date")
     var lastAirDate: String? = null
-    @JsonField(name = ["name"])
+    @SerialName("name")
     var name: String? = null
-    @JsonField(name = ["networkEntities"])
+    @SerialName("networkEntities")
     var networkEntities: List<NetworkEntity> = ArrayList()
-    @JsonField(name = ["number_of_episodes"])
+    @SerialName("number_of_episodes")
     var numberOfEpisodes: Int? = null
-    @JsonField(name = ["number_of_seasons"])
+    @SerialName("number_of_seasons")
     var numberOfSeasons: Int? = null
-    @JsonField(name = ["origin_country"])
+    @SerialName("origin_country")
     var originCountry: List<String> = ArrayList()
-    @JsonField(name = ["original_language"])
+    @SerialName("original_language")
     var originalLanguage: String? = null
-    @JsonField(name = ["original_name"])
+    @SerialName("original_name")
     var originalName: String? = null
-    @JsonField(name = ["overview"])
+    @SerialName("overview")
     var overview: String? = null
-    @JsonField(name = ["popularity"])
+    @SerialName("popularity")
     var popularity: Double? = null
-    @JsonField(name = ["poster_path"])
+    @SerialName("poster_path")
     var posterPath: String? = null
-    @JsonField(name = ["production_companies"])
+    @SerialName("production_companies")
     var productionCompanies: List<ProductionCompanyEntity> = ArrayList()
-    @JsonField(name = ["seasonEntities"])
+    @SerialName("seasonEntities")
     var seasonEntities: List<SeasonEntity> = ArrayList()
-    @JsonField(name = ["status"])
+    @SerialName("status")
     var status: String? = null
-    @JsonField(name = ["type"])
+    @SerialName("type")
     var type: String? = null
-    @JsonField(name = ["vote_average"])
+    @SerialName("vote_average")
     var voteAverage: Float? = null
-    @JsonField(name = ["vote_count"])
+    @SerialName("vote_count")
     var voteCount: Int? = null
 }

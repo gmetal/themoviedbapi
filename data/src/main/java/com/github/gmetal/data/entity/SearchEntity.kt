@@ -1,19 +1,12 @@
 package com.github.gmetal.data.entity
 
-import com.bluelinelabs.logansquare.annotation.JsonField
-import com.bluelinelabs.logansquare.annotation.JsonObject
+import kotlinx.serialization.Serializable
 
-import java.util.ArrayList
-
-@JsonObject
+@Serializable
 class SearchEntity : BaseMoviesDbEntity() {
 
-    @JsonField
     var page: Int? = null
-    @JsonField
     var resultEntities: List<ResultEntity> = ArrayList()
-    @JsonField
     var totalResults: Int? = null
-    @JsonField
     var totalPages: Int? = null
 }

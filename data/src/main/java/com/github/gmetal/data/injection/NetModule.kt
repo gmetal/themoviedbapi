@@ -1,15 +1,16 @@
 package com.github.gmetal.data.injection
 
-import com.github.aurae.retrofit2.LoganSquareConverterFactory
 import com.github.gmetal.data.net.TheMovieDBService
-
-import javax.inject.Named
-import javax.inject.Singleton
-
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
+import kotlinx.serialization.UnstableDefault
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import javax.inject.Named
+import javax.inject.Singleton
 
 @Module
 class NetModule {
@@ -22,6 +23,7 @@ class NetModule {
                 .build()
     }
 
+    @UseExperimental(UnstableDefault::class)
     @Singleton
     @Provides
     fun providesRetrofit(@Named("base_url") baseUrl: String, okHttpClient: OkHttpClient): Retrofit {
@@ -29,7 +31,7 @@ class NetModule {
         return Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(okHttpClient)
-                .addConverterFactory(LoganSquareConverterFactory.create())
+                .addConverterFactory(Json.nonstrict.asConverterFactory(MediaType.get("application/json")))
                 .build()
     }
 

@@ -1,18 +1,18 @@
 package com.github.gmetal.data.entity.response
 
-import com.bluelinelabs.logansquare.annotation.JsonField
-import com.bluelinelabs.logansquare.annotation.JsonObject
 import com.github.gmetal.data.entity.BaseMoviesDbEntity
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonObject
+@Serializable
 open class BasePagedResponseEntity : BaseMoviesDbEntity() {
 
-    @JsonField(name = ["page"])
+    @SerialName("page")
     var page: Int = 0
 
-    @JsonField(name = ["total_results"])
+    @SerialName("total_results")
     var totalResults: Int = 0
 
-    @JsonField(name = ["total_pages"])
+    @SerialName("total_pages")
     var totalPages: Int = 0
 }

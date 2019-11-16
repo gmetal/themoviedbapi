@@ -1,12 +1,12 @@
 package com.github.gmetal.data.entity.response
 
-import com.bluelinelabs.logansquare.annotation.JsonField
-import com.bluelinelabs.logansquare.annotation.JsonObject
 import com.github.gmetal.data.entity.MovieEntity
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonObject
+@Serializable
 class MoviesNowPlayingResponseEntity : BasePagedResponseEntity(), ResponseEntityList<MovieEntity> {
 
-    @JsonField(name = ["results"])
+    @SerialName("results")
     override var resultObjects: List<MovieEntity> = emptyList()
 }

@@ -1,14 +1,14 @@
 package com.github.gmetal.data.entity
 
-import com.bluelinelabs.logansquare.annotation.JsonField
-import com.bluelinelabs.logansquare.annotation.JsonObject
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonObject
+@Serializable
 class MovieDatesEntity {
 
-    @JsonField(name = ["minimum"])
+    @SerialName("minimum")
     var mMinimum: String? = null
 
-    @JsonField(name = ["maximum"])
+    @SerialName("maximum")
     var mMaximum: String? = null
 }

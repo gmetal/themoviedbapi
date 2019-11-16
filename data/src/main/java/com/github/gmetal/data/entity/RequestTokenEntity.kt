@@ -1,17 +1,16 @@
 package com.github.gmetal.data.entity
 
-import com.bluelinelabs.logansquare.annotation.JsonField
-import com.bluelinelabs.logansquare.annotation.JsonObject
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonObject
+@Serializable
 class RequestTokenEntity {
 
-    @JsonField
     var success: Boolean = false
 
-    @JsonField(name = ["expires_at"])
+    @SerialName("expires_at")
     var expiresAt: String? = null
 
-    @JsonField(name = ["request_token"])
+    @SerialName("request_token")
     var requestToken: String? = null
 }

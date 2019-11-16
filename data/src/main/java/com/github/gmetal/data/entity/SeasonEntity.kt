@@ -1,23 +1,23 @@
 package com.github.gmetal.data.entity
 
-import com.bluelinelabs.logansquare.annotation.JsonField
-import com.bluelinelabs.logansquare.annotation.JsonObject
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonObject
+@Serializable
 class SeasonEntity {
 
-    @JsonField(name = ["air_date"])
+    @SerialName("air_date")
     var airDate: String? = null
 
-    @JsonField(name = ["episode_count"])
+    @SerialName("episode_count")
     var episodeCount: Int? = null
 
-    @JsonField(name = ["id"])
+    @SerialName("id")
     var id: Int? = null
 
-    @JsonField(name = ["poster_path"])
+    @SerialName("poster_path")
     var posterPath: String? = null
 
-    @JsonField(name = ["season_number"])
+    @SerialName("season_number")
     var seasonNumber: Int? = null
 }
