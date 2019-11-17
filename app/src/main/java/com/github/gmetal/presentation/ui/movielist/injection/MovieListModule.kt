@@ -1,7 +1,9 @@
 package com.github.gmetal.presentation.ui.movielist.injection
 
 import com.github.gmetal.domain.interactor.GetLatestMoviesUseCase
+import com.github.gmetal.domain.interactor.GetLatestTvSeriesUseCase
 import com.github.gmetal.domain.repository.MoviesDataSource
+import com.github.gmetal.domain.repository.TvSeriesDataSource
 import com.github.gmetal.presentation.ui.movielist.mvp.MovieListPresenter
 import dagger.Module
 import dagger.Provides
@@ -13,5 +15,8 @@ class MovieListModule {
     fun providesLatestMoviesUseCase(moviesDataSource: MoviesDataSource) = GetLatestMoviesUseCase(moviesDataSource)
 
     @Provides
-    fun providesMovieListPresenter(moviesUseCase: GetLatestMoviesUseCase) = MovieListPresenter(moviesUseCase)
+    fun providesLatestTvSeriesUseCase(tvSeriesDataSource: TvSeriesDataSource) = GetLatestTvSeriesUseCase(tvSeriesDataSource)
+
+    @Provides
+    fun providesMovieListPresenter(tvSeriesUseCase: GetLatestTvSeriesUseCase) = MovieListPresenter(tvSeriesUseCase)
 }

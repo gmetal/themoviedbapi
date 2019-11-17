@@ -1,7 +1,5 @@
 package com.github.gmetal.presentation.injection
 
-import com.github.gmetal.data.injection.DataModule
-import com.github.gmetal.data.injection.NetModule
 import com.github.gmetal.presentation.SampleApplication
 import com.github.gmetal.presentation.ui.moviedetail.injection.MovieDetailBinder
 import com.github.gmetal.presentation.ui.movielist.injection.MovieListBinder

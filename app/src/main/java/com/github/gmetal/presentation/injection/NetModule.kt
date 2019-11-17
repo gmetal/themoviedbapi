@@ -1,4 +1,4 @@
-package com.github.gmetal.data.injection
+package com.github.gmetal.presentation.injection
 
 import com.github.gmetal.data.net.TheMovieDBService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory

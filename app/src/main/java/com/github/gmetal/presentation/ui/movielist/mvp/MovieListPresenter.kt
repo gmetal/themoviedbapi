@@ -1,6 +1,7 @@
 package com.github.gmetal.presentation.ui.movielist.mvp
 
 import com.github.gmetal.domain.interactor.GetLatestMoviesUseCase
+import com.github.gmetal.domain.interactor.GetLatestTvSeriesUseCase
 import com.github.gmetal.domain.model.MediaInfo
 import com.github.gmetal.domain.model.PagedEntity
 import com.github.gmetal.lib.FailureCallback
@@ -10,7 +11,7 @@ import com.github.gmetal.presentation.mappers.ModelMappers.asMovie
 import com.github.gmetal.presentation.model.MovieModel
 import com.github.gmetal.presentation.ui.common.mvp.BasePresenter
 
-class MovieListPresenter(private val latestMoviesUseCase: GetLatestMoviesUseCase) : BasePresenter<List<MovieModel>, MovieListView>() {
+class MovieListPresenter(private val latestMoviesUseCase: GetLatestTvSeriesUseCase) : BasePresenter<List<MovieModel>, MovieListView>() {
 
     var isLoadingMore: Boolean = false
 
@@ -25,7 +26,7 @@ class MovieListPresenter(private val latestMoviesUseCase: GetLatestMoviesUseCase
         view?.showLoading()
 
         latestMoviesUseCase.buildUseCase(
-                GetLatestMoviesUseCase.Params.forPage(pageNumber),
+                GetLatestTvSeriesUseCase.Params.forPage(pageNumber),
                 Notifiable(
                         object : SuccessCallback<PagedEntity<MediaInfo>> {
                             override fun success(pagedEntity: PagedEntity<MediaInfo>) {
