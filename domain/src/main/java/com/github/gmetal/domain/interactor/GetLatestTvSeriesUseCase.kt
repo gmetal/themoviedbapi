@@ -9,7 +9,7 @@ class GetLatestTvSeriesUseCase(
         private val tvSeriesDataSource: TvSeriesDataSource
 ) : UseCase<GetLatestTvSeriesUseCase.Params, PagedEntity<MediaInfo>, Throwable>() {
 
-    override fun buildUseCase(params: GetLatestTvSeriesUseCase.Params, notifiable: Notifiable<PagedEntity<MediaInfo>, Throwable>) {
+    override fun buildUseCase(params: Params, notifiable: Notifiable<PagedEntity<MediaInfo>, Throwable>) {
 
         tvSeriesDataSource.getCurrentTvSeries(params.pageNumber, notifiable)
     }

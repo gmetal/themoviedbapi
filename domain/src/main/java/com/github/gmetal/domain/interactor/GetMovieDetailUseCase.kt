@@ -4,11 +4,11 @@ import com.github.gmetal.domain.model.MovieMediaDetail
 import com.github.gmetal.domain.repository.MoviesDataSource
 import com.github.gmetal.lib.Notifiable
 
-class GetMovieDetailUseCase(private val mMoviesDataSource: MoviesDataSource) : UseCase<GetMovieDetailUseCase.Params, MovieMediaDetail, Throwable>() {
+class GetMovieDetailUseCase(private val moviesDataSource: MoviesDataSource) : UseCase<GetMovieDetailUseCase.Params, MovieMediaDetail, Throwable>() {
 
-    override fun buildUseCase(params: GetMovieDetailUseCase.Params, notifiable: Notifiable<MovieMediaDetail, Throwable>) {
+    override fun buildUseCase(params: Params, notifiable: Notifiable<MovieMediaDetail, Throwable>) {
 
-        mMoviesDataSource.getById(params.movieId, notifiable)
+        moviesDataSource.getById(params.movieId, notifiable)
     }
 
     class Params(val movieId: String) {

@@ -5,11 +5,11 @@ import com.github.gmetal.domain.model.PagedEntity
 import com.github.gmetal.domain.repository.MoviesDataSource
 import com.github.gmetal.lib.Notifiable
 
-class GetLatestMoviesUseCase(private val mMoviesDataSource: MoviesDataSource) : UseCase<GetLatestMoviesUseCase.Params, PagedEntity<MediaInfo>, Throwable>() {
+class GetLatestMoviesUseCase(private val moviesDataSource: MoviesDataSource) : UseCase<GetLatestMoviesUseCase.Params, PagedEntity<MediaInfo>, Throwable>() {
 
-    override fun buildUseCase(params: GetLatestMoviesUseCase.Params, notifiable: Notifiable<PagedEntity<MediaInfo>, Throwable>) {
+    override fun buildUseCase(params: Params, notifiable: Notifiable<PagedEntity<MediaInfo>, Throwable>) {
 
-        mMoviesDataSource.getLatestMovies(params.pageNumber, notifiable)
+        moviesDataSource.getLatestMovies(params.pageNumber, notifiable)
     }
 
     class Params private constructor(val pageNumber: Int) {
