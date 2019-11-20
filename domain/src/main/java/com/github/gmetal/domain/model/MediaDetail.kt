@@ -1,14 +1,18 @@
 package com.github.gmetal.domain.model
 
-import java.util.*
+import com.github.gmetal.domain.model.MediaItem.Companion.IMAGE_PREFIX
+
+const val DEFAULT_ID = -1
+fun Int?.orDefaultId(): Int = this ?: DEFAULT_ID
+fun String?.imagePrefixPathOrEmpty(): String = if (this != null) IMAGE_PREFIX + this else ""
 
 open class MediaDetail {
 
     var adult: Boolean? = null
     var backdropPath: String = ""
-    var belongsToCollection: String
+    var belongsToCollection: MediaCollection = MediaCollection.empty()
     var budget: Int? = null
-    var genres: MutableList<String> = ArrayList()
+    var genres: MutableList<String> = mutableListOf()
     var homepage: String = ""
     var id: Int? = null
     var imdbId: String
@@ -28,8 +32,6 @@ open class MediaDetail {
     var voteCount: Int? = null
 
     init {
-
-        this.belongsToCollection = ""
         this.budget = 0
         this.imdbId = "-1"
         this.revenue = 0

@@ -12,7 +12,7 @@ class MovieEntity {
     var backdropPath: String? = null
 
     @SerialName("belongs_to_collection")
-    var belongsToCollection: String? = null
+    var belongsToCollection: CollectionEntity? = null
 
     var budget: Int? = null
 

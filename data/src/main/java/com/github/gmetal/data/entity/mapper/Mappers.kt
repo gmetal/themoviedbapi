@@ -1,8 +1,31 @@
 package com.github.gmetal.data.entity.mapper
 
-import com.github.gmetal.data.entity.*
-import com.github.gmetal.domain.model.*
+import com.github.gmetal.data.entity.AccountEntity
+import com.github.gmetal.data.entity.CollectionEntity
+import com.github.gmetal.data.entity.MovieEntity
+import com.github.gmetal.data.entity.RequestTokenEntity
+import com.github.gmetal.data.entity.SeasonEntity
+import com.github.gmetal.data.entity.SessionEntity
+import com.github.gmetal.data.entity.TvShowEntity
+import com.github.gmetal.domain.model.Account
+import com.github.gmetal.domain.model.MediaCollection
+import com.github.gmetal.domain.model.MediaInfo
 import com.github.gmetal.domain.model.MediaItem.Companion.IMAGE_PREFIX
+import com.github.gmetal.domain.model.MovieMediaDetail
+import com.github.gmetal.domain.model.ServerSession
+import com.github.gmetal.domain.model.Token
+import com.github.gmetal.domain.model.TvMediaDetail
+import com.github.gmetal.domain.model.TvSeason
+import com.github.gmetal.domain.model.imagePrefixPathOrEmpty
+import com.github.gmetal.domain.model.orDefaultId
+
+private fun CollectionEntity?.toMediaCollectionOrEmpty(): MediaCollection =
+    if (this != null) MediaCollection(
+        id.orDefaultId(),
+        name.orEmpty(),
+        posterPath.imagePrefixPathOrEmpty(),
+        backdropPath.imagePrefixPathOrEmpty()
+    ) else MediaCollection.empty()
 
 object Mappers {
 
@@ -53,8 +76,8 @@ object Mappers {
 
         val mediaDetail = MovieMediaDetail()
         mediaDetail.adult = movieEntity.adult
-        mediaDetail.backdropPath = IMAGE_PREFIX + movieEntity.backdropPath!!
-        mediaDetail.belongsToCollection = movieEntity.belongsToCollection.orEmpty()
+        mediaDetail.backdropPath = movieEntity.backdropPath.imagePrefixPathOrEmpty()
+        mediaDetail.belongsToCollection = movieEntity.belongsToCollection.toMediaCollectionOrEmpty()
         mediaDetail.budget = movieEntity.budget
         for (i in movieEntity.genreEntities.indices) {
             mediaDetail.genres.add(movieEntity.genreEntities[i].name.orEmpty())
@@ -80,7 +103,6 @@ object Mappers {
         return mediaDetail
     }
 
-
     fun convert(sessionResponse: SessionEntity): ServerSession {
 
         val serverSession = ServerSession()
@@ -99,7 +121,6 @@ object Mappers {
 
         return token
     }
-
 
     fun convert(response: TvShowEntity): TvMediaDetail {
 
@@ -129,7 +150,6 @@ object Mappers {
 
         return tvMediaDetail
     }
-
 
     fun convert(seasonEntity: SeasonEntity): TvSeason {
 
