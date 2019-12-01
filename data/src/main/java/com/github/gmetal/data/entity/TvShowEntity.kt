@@ -48,7 +48,7 @@ class TvShowEntity {
     var posterPath: String? = null
     @SerialName("production_companies")
     var productionCompanies: List<ProductionCompanyEntity> = ArrayList()
-    @SerialName("seasonEntities")
+    @SerialName("seasons")
     var seasonEntities: List<SeasonEntity> = ArrayList()
     @SerialName("status")
     var status: String? = null

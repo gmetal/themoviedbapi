@@ -19,7 +19,7 @@ interface TheMovieDBService {
     fun getMovieById(@Path("id") id: String, @Query("api_key") apiKey: String): Call<MovieEntity>
 
     @GET("/3/tv/{id}")
-    fun getTVById(@Path("id") id: String, @Query("api_key") apiKey: String): Call<TvShowEntity>
+    fun getTvShowById(@Path("id") id: String, @Query("api_key") apiKey: String): Call<TvShowEntity>
 
     @GET("/3/tv/on_the_air")
     fun getTvShowsCurrentlyOnAir(@Query("api_key") apiKey: String,

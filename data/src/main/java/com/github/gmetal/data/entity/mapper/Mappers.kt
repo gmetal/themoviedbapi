@@ -48,8 +48,8 @@ object Mappers {
 
         mediaInfo.name = tvShow.name.orEmpty()
         mediaInfo.isTv = true
-        mediaInfo.dbId = Integer.toString(tvShow.id!!)
-        mediaInfo.imageURL = IMAGE_PREFIX + tvShow.posterPath!!
+        mediaInfo.dbId = tvShow.id.toString()
+        mediaInfo.imageURL = IMAGE_PREFIX + tvShow.posterPath
         mediaInfo.overview = tvShow.overview.orEmpty()
         mediaInfo.voteCount = tvShow.voteCount
         mediaInfo.voteAverage = tvShow.voteAverage
@@ -63,8 +63,8 @@ object Mappers {
 
         mediaInfo.name = movieEntity.title.orEmpty()
         mediaInfo.isTv = false
-        mediaInfo.dbId = Integer.toString(movieEntity.id!!)
-        mediaInfo.imageURL = IMAGE_PREFIX + movieEntity.posterPath!!
+        mediaInfo.dbId = movieEntity.id.toString()
+        mediaInfo.imageURL = IMAGE_PREFIX + movieEntity.posterPath
         mediaInfo.overview = movieEntity.overview.orEmpty()
         mediaInfo.voteCount = movieEntity.voteCount
         mediaInfo.voteAverage = movieEntity.voteAverage
@@ -89,7 +89,7 @@ object Mappers {
         mediaDetail.originalTitle = movieEntity.originalTitle.orEmpty()
         mediaDetail.overview = movieEntity.overview.orEmpty()
         mediaDetail.popularity = movieEntity.popularity
-        mediaDetail.posterPath = IMAGE_PREFIX + movieEntity.posterPath!!
+        mediaDetail.posterPath = IMAGE_PREFIX + movieEntity.posterPath
         mediaDetail.releaseDate = movieEntity.releaseDate.orEmpty()
         mediaDetail.revenue = movieEntity.revenue
         mediaDetail.runtime = movieEntity.runtime
@@ -126,7 +126,7 @@ object Mappers {
 
         val tvMediaDetail = TvMediaDetail()
         tvMediaDetail.adult = false
-        tvMediaDetail.backdropPath = IMAGE_PREFIX + response.backdropPath!!
+        tvMediaDetail.backdropPath = IMAGE_PREFIX + response.backdropPath
         for (genreEntity in response.genreEntities) {
             tvMediaDetail.genres.add(genreEntity.name.orEmpty())
         }
@@ -136,7 +136,7 @@ object Mappers {
         tvMediaDetail.originalTitle = response.originalName.orEmpty()
         tvMediaDetail.overview = response.overview.orEmpty()
         tvMediaDetail.popularity = response.popularity
-        tvMediaDetail.posterPath = IMAGE_PREFIX + response.posterPath!!
+        tvMediaDetail.posterPath = IMAGE_PREFIX + response.posterPath
         tvMediaDetail.releaseDate = response.firstAirDate.orEmpty()
         tvMediaDetail.status = response.status.orEmpty()
         tvMediaDetail.title = response.name.orEmpty()

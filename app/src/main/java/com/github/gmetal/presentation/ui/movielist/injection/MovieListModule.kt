@@ -18,5 +18,5 @@ class MovieListModule {
     fun providesLatestTvSeriesUseCase(tvSeriesDataSource: TvSeriesDataSource) = GetLatestTvSeriesUseCase(tvSeriesDataSource)
 
     @Provides
-    fun providesMovieListPresenter(tvSeriesUseCase: GetLatestTvSeriesUseCase) = MovieListPresenter(tvSeriesUseCase)
+    fun providesMovieListPresenter(moviesUseCase: GetLatestMoviesUseCase) = MovieListPresenter(moviesUseCase)
 }

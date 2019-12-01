@@ -11,13 +11,13 @@ class TvSeason {
     var posterPath: String
 
     val mediaId: String
-        get() = Integer.toString(this.id!!)
+        get() = id.toString()
 
     val image: String
         get() = IMAGE_PREFIX + posterPath
 
     val title: String
-        get() = "SeasonEntity " + seasonNumber!!
+        get() = "SeasonEntity ${seasonNumber}"
 
     init {
 
