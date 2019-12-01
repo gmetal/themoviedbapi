@@ -14,7 +14,7 @@ class TvShowEntity {
     var episodeRunTime: List<Int> = ArrayList()
     @SerialName("first_air_date")
     var firstAirDate: String? = null
-    @SerialName("genreEntities")
+    @SerialName("genres")
     var genreEntities: List<GenreEntity> = ArrayList()
     @SerialName("homepage")
     var homepage: String? = null
@@ -28,7 +28,7 @@ class TvShowEntity {
     var lastAirDate: String? = null
     @SerialName("name")
     var name: String? = null
-    @SerialName("networkEntities")
+    @SerialName("networks")
     var networkEntities: List<NetworkEntity> = ArrayList()
     @SerialName("number_of_episodes")
     var numberOfEpisodes: Int? = null
