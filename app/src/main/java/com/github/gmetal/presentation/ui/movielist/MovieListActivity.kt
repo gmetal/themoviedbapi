@@ -15,7 +15,6 @@ import com.github.gmetal.presentation.ui.moviedetail.MovieDetailActivity
 import com.github.gmetal.presentation.ui.movielist.mvp.MovieListPresenter
 import com.github.gmetal.presentation.ui.movielist.mvp.MovieListView
 import dagger.android.AndroidInjection
-import org.parceler.Parcels
 import javax.inject.Inject
 
 class MovieListActivity : AppCompatActivity(), MovieListView, View.OnClickListener {
@@ -83,8 +82,8 @@ class MovieListActivity : AppCompatActivity(), MovieListView, View.OnClickListen
 
         view?.tag?.let {
             startActivity(
-                    Intent(this, MovieDetailActivity::class.java)
-                            .putExtra(MOVIE_PARAM, Parcels.wrap(it as MovieModel))
+                Intent(this, MovieDetailActivity::class.java)
+                    .putExtra(MOVIE_PARAM, it as MovieModel)
             )
         }
     }

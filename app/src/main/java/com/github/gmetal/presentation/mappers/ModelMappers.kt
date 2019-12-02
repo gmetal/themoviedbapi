@@ -16,8 +16,8 @@ object ModelMappers {
         movieModel.isLoadingObject = false
         movieModel.name = mediaInfo.name
         movieModel.overview = mediaInfo.overview
-        movieModel.voteAverage = mediaInfo.voteAverage
-        movieModel.voteCount = mediaInfo.voteCount
+        movieModel.voteAverage = mediaInfo.voteAverage ?: 0.0f
+        movieModel.voteCount = mediaInfo.voteCount ?: 0
         return movieModel
     }
 
@@ -29,8 +29,8 @@ object ModelMappers {
         movieModel.isLoadingObject = false
         movieModel.name = movieMediaDetail.title
         movieModel.overview = movieMediaDetail.overview
-        movieModel.voteAverage = movieMediaDetail.voteAverage
-        movieModel.voteCount = movieMediaDetail.voteCount
+        movieModel.voteAverage = movieMediaDetail.voteAverage ?: 0.0f
+        movieModel.voteCount = movieMediaDetail.voteCount ?: 0
         return movieModel
     }
 
@@ -42,8 +42,8 @@ object ModelMappers {
         movieModel.isLoadingObject = false
         movieModel.name = tvMediaDetail.title
         movieModel.overview = tvMediaDetail.overview
-        movieModel.voteAverage = tvMediaDetail.voteAverage
-        movieModel.voteCount = tvMediaDetail.voteCount
+        movieModel.voteAverage = tvMediaDetail.voteAverage ?: 0.0f
+        movieModel.voteCount = tvMediaDetail.voteCount ?: 0
         return movieModel
     }
 }

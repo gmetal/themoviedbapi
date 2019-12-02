@@ -45,9 +45,6 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.recyclerview:recyclerview:1.0.0"
 
-    implementation "org.parceler:parceler-api:$rootProject.ext.parcelerVersion"
-    kapt "org.parceler:parceler:$rootProject.ext.parcelerVersion"
-
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     implementation "com.google.dagger:dagger-android:$rootProject.ext.daggerVersion"

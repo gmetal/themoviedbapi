@@ -9,7 +9,6 @@ import com.github.gmetal.presentation.ui.moviedetail.MovieDetailActivity
 import com.github.gmetal.presentation.ui.moviedetail.mvp.MovieDetailPresenter
 import dagger.Module
 import dagger.Provides
-import org.parceler.Parcels
 
 @Module
 class MovieDetailModule {
@@ -21,5 +20,5 @@ class MovieDetailModule {
     fun providesMovieDetailPresenter(movieDetailUseCase: GetMovieDetailUseCase) = MovieDetailPresenter(movieDetailUseCase)
 
     @Provides
-    fun providesMovieModel(movieDetailActivity: MovieDetailActivity): String = (Parcels.unwrap(movieDetailActivity.intent.extras?.get(MOVIE_PARAM) as Parcelable?) as MovieModel).id
+    fun providesMovieModel(movieDetailActivity: MovieDetailActivity): String = ((movieDetailActivity.intent.extras?.get(MOVIE_PARAM) as Parcelable?) as MovieModel).id
 }
